@@ -4,82 +4,275 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sattvi Tripathy — Portfolio</title>
-<meta name="description" content="Products built by Sattvi Tripathy.">
+<meta name="description" content="Products built by Sattvi Tripathy — small, useful tools that run in the browser.">
+<meta property="og:title" content="Sattvi Tripathy — Portfolio">
+<meta property="og:description" content="Products built by Sattvi Tripathy — small, useful tools that run in the browser.">
+<meta property="og:type" content="website">
 <style>
   :root{
-    --bg:#0f1115; --card:#171a21; --line:#262b35;
-    --text:#e8eaed; --muted:#9aa3b2; --accent:#a78bfa; --accent-2:#34d399;
+    --bg:#0e1014; --bg-2:#12151c; --card:#171a21; --line:#262b35;
+    --text:#e8eaed; --muted:#9aa3b2; --faint:#6b7383;
+    --accent:#a78bfa; --accent-2:#34d399;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg); color:var(--text);
-    line-height:1.6; -webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(167,139,250,.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(52,211,153,.06), transparent 55%),
+      var(--bg);
+    color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:880px; margin:0 auto; padding:72px 24px 96px}
+  .wrap{max-width:1080px; margin:0 auto; padding:72px 24px 96px}
+
+  /* Header */
   header{margin-bottom:56px}
-  h1{font-size:2.4rem; font-weight:700; letter-spacing:-.02em}
-  .sub{color:var(--muted); font-size:1.1rem; margin-top:10px}
-  .links{margin-top:20px; display:flex; gap:18px; flex-wrap:wrap}
-  .links a{color:var(--accent); text-decoration:none; font-size:.95rem}
-  .links a:hover{text-decoration:underline}
-  h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.12em;
-     color:var(--muted); font-weight:600; margin-bottom:22px}
-  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px}
+  .eyebrow{color:var(--accent); font-size:.8rem; font-weight:600; letter-spacing:.14em;
+           text-transform:uppercase; margin-bottom:14px}
+  h1{font-size:2.6rem; font-weight:750; letter-spacing:-.025em}
+  .sub{color:var(--muted); font-size:1.12rem; margin-top:12px; max-width:60ch}
+  .links{margin-top:24px; display:flex; gap:10px; flex-wrap:wrap}
+  .links a{color:var(--text); text-decoration:none; font-size:.9rem; font-weight:500;
+           border:1px solid var(--line); background:var(--bg-2);
+           padding:8px 14px; border-radius:999px; transition:border-color .15s, color .15s}
+  .links a:hover{border-color:var(--accent); color:var(--accent)}
+
+  /* Section label */
+  .section-head{display:flex; align-items:baseline; justify-content:space-between;
+                margin-bottom:24px; gap:16px; flex-wrap:wrap}
+  h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.14em;
+     color:var(--muted); font-weight:600}
+  .count{color:var(--faint); font-size:.82rem}
+
+  /* Grid */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:22px}
+
+  /* Card */
   .card{
-    background:var(--card); border:1px solid var(--line); border-radius:14px;
-    padding:26px; display:flex; flex-direction:column;
-    transition:border-color .2s, transform .2s;
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
   }
-  .card:hover{border-color:#3a4150; transform:translateY(-2px)}
-  .tag{display:inline-block; font-size:.72rem; font-weight:600; letter-spacing:.04em;
-       color:var(--accent-2); background:rgba(52,211,153,.1);
-       padding:4px 10px; border-radius:20px; align-self:flex-start; margin-bottom:14px}
-  .card h3{font-size:1.3rem; font-weight:700; margin-bottom:8px}
-  .card p{color:var(--muted); font-size:.96rem; flex:1}
-  .card .actions{margin-top:20px; display:flex; gap:14px}
-  .btn{font-size:.9rem; font-weight:600; text-decoration:none; padding:9px 16px;
-       border-radius:8px; transition:background .15s, color .15s}
-  .btn-primary{background:var(--accent); color:#0f1115}
-  .btn-primary:hover{background:#b9a3ff}
+  .card:hover{border-color:#3a4150; transform:translateY(-3px);
+              box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
+
+  .shot{display:block; position:relative; aspect-ratio:16/10; overflow:hidden;
+        background:var(--bg-2); border-bottom:1px solid var(--line)}
+  .shot img{width:100%; height:100%; object-fit:cover; object-position:top center;
+            display:block; transition:transform .35s ease}
+  .card:hover .shot img{transform:scale(1.035)}
+
+  .body{padding:20px 22px 22px; display:flex; flex-direction:column; flex:1}
+  .tag{display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.05em;
+       text-transform:uppercase; color:var(--accent-2); background:rgba(52,211,153,.1);
+       padding:4px 10px; border-radius:20px; align-self:flex-start; margin-bottom:12px}
+  .card h3{font-size:1.28rem; font-weight:700; margin-bottom:4px; letter-spacing:-.01em}
+  .tagline{color:var(--muted); font-size:.95rem}
+
+  /* Collapsible */
+  details{margin-top:14px; border-top:1px solid var(--line); padding-top:12px}
+  summary{cursor:pointer; list-style:none; color:var(--accent); font-size:.84rem;
+          font-weight:600; display:flex; align-items:center; gap:6px; user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary .chev{transition:transform .2s; font-size:.7rem; color:var(--faint)}
+  details[open] summary .chev{transform:rotate(90deg)}
+  details p{color:var(--muted); font-size:.92rem; margin-top:10px}
+
+  .actions{margin-top:auto; padding-top:20px; display:flex; gap:10px}
+  .btn{font-size:.88rem; font-weight:600; text-decoration:none; padding:9px 16px;
+       border-radius:9px; transition:background .15s, color .15s, border-color .15s}
+  .btn-primary{background:var(--accent); color:#10121a}
+  .btn-primary:hover{background:#bda6ff}
   .btn-ghost{color:var(--text); border:1px solid var(--line)}
   .btn-ghost:hover{border-color:#4a5263}
-  footer{margin-top:72px; color:var(--muted); font-size:.85rem; text-align:center}
+
+  footer{margin-top:80px; color:var(--faint); font-size:.84rem; text-align:center}
   footer a{color:var(--muted)}
+
+  @media (max-width:560px){
+    .wrap{padding:48px 18px 72px}
+    h1{font-size:2.1rem}
+  }
 </style>
 </head>
 <body>
   <div class="wrap">
     <header>
+      <p class="eyebrow">Portfolio</p>
       <h1>Sattvi Tripathy</h1>
-      <p class="sub">Things I build. Small, useful products that run in the browser.</p>
+      <p class="sub">I build small, useful products that run entirely in the browser — offline-first PWAs, data dashboards, and a few experiments. No servers, no accounts.</p>
       <div class="links">
         <a href="https://github.com/SattviTripathy" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/sattvitripathy/" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="mailto:sattvitripathy97@gmail.com">Email ↗</a>
       </div>
     </header>
 
     <main>
-      <h2>Products</h2>
+      <div class="section-head">
+        <h2>Products</h2>
+        <span class="count">8 shipped · all live</span>
+      </div>
       <div class="grid">
 
+        <!-- Meridian -->
         <article class="card">
-          <span class="tag">Productivity · PWA</span>
-          <h3>Momentum</h3>
-          <p>A focus and Pomodoro app, packaged as an installable progressive web app. Works offline, stores data locally on your device, and installs to your home screen — no account, no server.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://sattvitripathy.github.io/Momentum/" target="_blank" rel="noopener">Open app</a>
-            <a class="btn btn-ghost" href="https://github.com/SattviTripathy/Momentum" target="_blank" rel="noopener">Code</a>
+          <a class="shot" href="https://sattvitripathy.github.io/meridian/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/meridian.png" alt="Meridian vegetation risk dashboard screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Geospatial · Utilities</span>
+            <h3>Meridian</h3>
+            <p class="tagline">Condition-based vegetation risk intelligence for electric utilities.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A decision-support dashboard that scores and ranks every span of a utility's network for vegetation-driven wildfire and outage risk. Combines a Vegetation Risk Index, an interactive map and one-line schematic, California fire-tier data, and a budget optimizer that prioritizes the highest-risk spans within a fixed trim budget. Offline-capable PWA built on synthetic data.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/meridian/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/meridian" target="_blank" rel="noopener">Code</a>
+            </div>
           </div>
         </article>
 
+        <!-- Materiality Map -->
         <article class="card">
-          <span class="tag">ESG · Sustainability</span>
-          <h3>Materiality Map</h3>
-          <p>An ESG disclosure engine for utilities — maps material sustainability topics to the disclosures and frameworks that matter, turning reporting requirements into a navigable view.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="https://sattvitripathy.github.io/materiality-map/" target="_blank" rel="noopener">Open app</a>
-            <a class="btn btn-ghost" href="https://github.com/SattviTripathy/materiality-map" target="_blank" rel="noopener">Code</a>
+          <a class="shot" href="https://sattvitripathy.github.io/materiality-map/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/materiality-map.png" alt="Materiality Map ESG disclosure engine screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">ESG · Sustainability</span>
+            <h3>Materiality Map</h3>
+            <p class="tagline">An ESG disclosure engine that scopes which standards apply to a utility.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A deterministic, traceable disclosure engine. Describe a company's operations and it maps the material sustainability topics and the specific disclosures that apply across GRI, SASB, ISSB, ESRS, BRSR and CDP — drawing on a curated knowledge graph of 111 indicators across 7 standards, via a guided four-step flow from profile to disclosures.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/materiality-map/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/materiality-map" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Momentum -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/Momentum/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/momentum.png" alt="Momentum focus and productivity app screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Productivity · PWA</span>
+            <h3>Momentum</h3>
+            <p class="tagline">Tasks, a Pomodoro timer, and insights in one installable focus app.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A focus and productivity PWA that brings together task management, a Pomodoro timer, an AI review of your sessions, and progress insights. Works fully offline, stores everything locally on your device, and installs to your home screen — no account, no server.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/Momentum/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/Momentum" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Office Portfolio -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/office-portfolio.png" alt="3D office portfolio walk-around experience screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">3D · WebGL</span>
+            <h3>Office Portfolio</h3>
+            <p class="tagline">Walk around a 3D office and click the props to open my projects.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>An interactive, third-person portfolio built in Three.js. You walk a character around a glass corner office; each prop — the desk, bookshelf, clock, calendar — links out to one of my projects. A single self-contained file with no build step, and a skyline that shifts between day, dusk, and night by the current time.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/office-portfolio" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mundane -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/mundane/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/mundane.png" alt="Mundane routine tracker screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Habits · PWA</span>
+            <h3>Mundane</h3>
+            <p class="tagline">A gentle, offline-first tracker for the routines that repeat.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A calm routine tracker for tasks that recur — daily, every other day, or every two weeks — sorted into simple buckets, with light insights to keep you honest. Offline-first PWA. <em>Do it anyway.</em></p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/mundane/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/mundane" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Moor -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/moor/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/moor.png" alt="Moor anxiety-relief exercises screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Wellbeing · PWA</span>
+            <h3>Moor</h3>
+            <p class="tagline">Breathing, grounding, and body practices for anxiety relief — fully offline.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A quiet, mobile-first PWA of anxiety-relief exercises. One tap into box breathing, plus 4-7-8 and the physiological sigh with guided animation; the 5-4-3-2-1 grounding walkthrough; and head-to-toe muscle relaxation. Soft lavender theme, sound and haptic cues, respects reduced-motion, and runs fully offline once installed.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/moor/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/moor" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Munch -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/munch/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/munch.png" alt="Munch daily calorie counter screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Health · PWA</span>
+            <h3>Munch</h3>
+            <p class="tagline">A dead-simple daily calorie counter that resets every day.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A minimalist offline calorie counter. Tap to add against a daily target, undo the last entry, and let it reset each day while keeping a record of every day's total. No accounts, installable, works offline.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/munch/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/munch" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tick Tock / age-counter -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/age-counter/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/age-counter.png" alt="Tick Tock live age counter screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">Utility · Extension</span>
+            <h3>Tick Tock</h3>
+            <p class="tagline">Your live age, counting up by the second.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>A minimalist age calculator that also ships as a Chrome new-tab extension. Enter your date and time of birth and watch your age tick up live, available as both a GitHub Pages demo and a browser extension.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/age-counter/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/age-counter" target="_blank" rel="noopener">Code</a>
+            </div>
           </div>
         </article>
 
