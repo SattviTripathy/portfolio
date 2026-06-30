@@ -43,7 +43,10 @@
                 margin-bottom:24px; gap:16px; flex-wrap:wrap}
   h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.14em;
      color:var(--muted); font-weight:600}
-  .count{color:var(--faint); font-size:.82rem}
+  .count{color:var(--faint); font-size:.82rem; white-space:nowrap}
+  .section-sub{color:var(--faint); font-size:.9rem; margin-top:6px;
+               text-transform:none; letter-spacing:normal; font-weight:400}
+  main > section + section{margin-top:60px}
 
   /* Grid */
   .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:22px}
@@ -110,9 +113,13 @@
     </header>
 
     <main>
+      <section class="products">
       <div class="section-head">
-        <h2>Products</h2>
-        <span class="count">8 shipped · all live</span>
+        <div>
+          <h2>Industry Solutions</h2>
+          <p class="section-sub">Decision-support tools for utilities and sustainability teams.</p>
+        </div>
+        <span class="count">2 products</span>
       </div>
       <div class="grid">
 
@@ -156,6 +163,19 @@
           </div>
         </article>
 
+      </div>
+      </section>
+
+      <section class="products">
+      <div class="section-head">
+        <div>
+          <h2>Personal Productivity &amp; Wellbeing</h2>
+          <p class="section-sub">Everyday apps for focus, habits, and headspace.</p>
+        </div>
+        <span class="count">4 products</span>
+      </div>
+      <div class="grid">
+
         <!-- Momentum -->
         <article class="card">
           <a class="shot" href="https://sattvitripathy.github.io/Momentum/" target="_blank" rel="noopener">
@@ -172,26 +192,6 @@
             <div class="actions">
               <a class="btn btn-primary" href="https://sattvitripathy.github.io/Momentum/" target="_blank" rel="noopener">Open app</a>
               <a class="btn btn-ghost" href="https://github.com/SattviTripathy/Momentum" target="_blank" rel="noopener">Code</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Office Portfolio -->
-        <article class="card">
-          <a class="shot" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">
-            <img loading="lazy" src="shots/office-portfolio.png" alt="3D office portfolio walk-around experience screenshot">
-          </a>
-          <div class="body">
-            <span class="tag">3D · WebGL</span>
-            <h3>Office Portfolio</h3>
-            <p class="tagline">Walk around a 3D office and click the props to open my projects.</p>
-            <details>
-              <summary><span class="chev">▶</span> About</summary>
-              <p>An interactive, third-person portfolio built in Three.js. You walk a character around a glass corner office; each prop — the desk, bookshelf, clock, calendar — links out to one of my projects. A single self-contained file with no build step, and a skyline that shifts between day, dusk, and night by the current time.</p>
-            </details>
-            <div class="actions">
-              <a class="btn btn-primary" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">Open app</a>
-              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/office-portfolio" target="_blank" rel="noopener">Code</a>
             </div>
           </div>
         </article>
@@ -256,6 +256,39 @@
           </div>
         </article>
 
+      </div>
+      </section>
+
+      <section class="products">
+      <div class="section-head">
+        <div>
+          <h2>Experiments &amp; Fun</h2>
+          <p class="section-sub">Side projects built to play with an idea.</p>
+        </div>
+        <span class="count">2 products</span>
+      </div>
+      <div class="grid">
+
+        <!-- Office Portfolio -->
+        <article class="card">
+          <a class="shot" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">
+            <img loading="lazy" src="shots/office-portfolio.png" alt="3D office portfolio walk-around experience screenshot">
+          </a>
+          <div class="body">
+            <span class="tag">3D · WebGL</span>
+            <h3>Office Portfolio</h3>
+            <p class="tagline">Walk around a 3D office and click the props to open my projects.</p>
+            <details>
+              <summary><span class="chev">▶</span> About</summary>
+              <p>An interactive, third-person portfolio built in Three.js. You walk a character around a glass corner office; each prop — the desk, bookshelf, clock, calendar — links out to one of my projects. A single self-contained file with no build step, and a skyline that shifts between day, dusk, and night by the current time.</p>
+            </details>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://sattvitripathy.github.io/office-portfolio/" target="_blank" rel="noopener">Open app</a>
+              <a class="btn btn-ghost" href="https://github.com/SattviTripathy/office-portfolio" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
         <!-- Tick Tock / age-counter -->
         <article class="card">
           <a class="shot" href="https://sattvitripathy.github.io/age-counter/" target="_blank" rel="noopener">
@@ -277,6 +310,7 @@
         </article>
 
       </div>
+      </section>
     </main>
 
     <footer>
